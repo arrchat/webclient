@@ -1,0 +1,18 @@
+{
+  "name": "webchat",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "wvffle <casper@wvffle.net>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

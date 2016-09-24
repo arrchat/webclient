@@ -1,0 +1,24 @@
+{
+  "name": "webchat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "coffee-script": "^1.10.0",
+    "ejs": "^2.5.1",
+    "glob": "^7.0.6",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-coffee": "^1.0.0",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-stylus": "^1.2.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-ejs": "^0.3.0",
+    "rimraf": "^2.5.4"
+  }
+}
