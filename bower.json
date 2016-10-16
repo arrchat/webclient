@@ -14,5 +14,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "waff-query": "2.0.0-beta2",
+    "angular": "^1.5.8"
+  }
 }

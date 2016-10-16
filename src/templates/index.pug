@@ -1,0 +1,10 @@
+// index template
+doctype html
+html
+  head
+    != css()
+    != js_bower()
+    != css_bower()
+    script(src='app/module.js')
+  body(ng-app='arrchat')
+    .header
