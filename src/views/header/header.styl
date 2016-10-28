@@ -1,19 +1,37 @@
 // header view
 @import 'theme'
-
-height = 60px
-padding = 7px
+@import 'dimensions'
 
 .header
-  color base
+  color: theme.base
   height 60px
-  border-bottom 1px solid #4d4d4d33
+  border-bottom: 1px solid theme.gray
   .logo
     font-weight 900
     font-size 3em
-    line-height height - padding * 2
-    margin padding 0
+    line-height: dimensions.header.height - dimensions.header.padding * 2
+    margin: dimensions.header.padding 0
+    width: dimensions.page.conversations.width
+    float left
+    display flex
+    justify-content center
+    border-right: 1px solid theme.gray
     img
-      size height - padding * 2
-      margin 0 padding 0 0
+      size: dimensions.header.height - dimensions.header.padding * 2
+      margin: 0 dimensions.header.padding 0 0
       float left
+  .right
+    float right
+    margin: dimensions.header.padding dimensions.section.padding
+    display flex
+    a
+      font-size 1.6em
+      font-weight 100
+      color: theme.text
+      line-height: dimensions.header.height - dimensions.header.padding * 2
+      margin: 0 dimensions.header.padding
+      display flex
+      align-items center
+      img
+        width 30px
+        margin-right: dimensions.section.small-pad

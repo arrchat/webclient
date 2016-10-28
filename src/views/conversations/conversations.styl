@@ -1,0 +1,19 @@
+@import 'theme'
+@import 'dimensions'
+
+// conversations view
+.conversations
+  border-right: 1px solid theme.gray
+  height: s('calc(100vh - %s)', dimensions.header.height)
+  width: dimensions.page.conversations.width
+  position relative
+
+  .hat
+    display block
+    position absolute
+    bottom 0
+    left 0
+    right 0
+    top 0
+    background asset('assets/arrhat.svg') 0 100% / 100% no-repeat
+    pointer-events none

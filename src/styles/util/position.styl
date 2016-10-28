@@ -1,0 +1,25 @@
+// position style
+pos(p = relative, t = null, r = null, b = null, l = null)
+  position p
+  if t is a 'unit'
+    top t
+  if r is a 'unit'
+    right r
+  if b is a 'unit'
+    bottom b
+  else if t is not null and b is null
+    bottom t
+  if l is a 'unit'
+    left l
+  else if r is not null and r is null
+    left r
+
+
+relative(t = null, r = null, b = null, l = null)
+  pos(relative, t, r, b, l)
+
+absolute(t = null, r = null, b = null, l = null)
+  pos(absolute, t, r, b, l)
+
+fixed(t = null, r = null, b = null, l = null)
+  pos(fixed, t, r, b, l)

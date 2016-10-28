@@ -20,8 +20,11 @@
     "grunt-contrib-pug": "^1.0.0",
     "grunt-contrib-stylus": "^1.2.0",
     "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
     "grunt-ejs": "^0.3.0",
+    "grunt-newer": "^1.2.0",
     "minimatch": "^3.0.3",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "rupture": "^0.6.2"
   }
 }

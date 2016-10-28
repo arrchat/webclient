@@ -8,6 +8,18 @@ module.exports = (grunt) ->
   util = require 'util'
   minimatch = require 'minimatch'
 
+  # stylus plugins
+  rupture = require 'rupture'
+
+  # string multiplication
+  String::times = (times) ->
+    if times then (new Array ++times).join @ else ''
+  String::format = ->
+    args = arguments
+    @replace /\{\d+\}/g, (a) ->
+      a = args[a.slice(1, -1)]
+      if a? then a else ''
+
   grunt.initConfig
     pkg: json
     browserify:
@@ -68,16 +80,22 @@ module.exports = (grunt) ->
     stylus:
       compile:
         files: [
-            cwd: '.tmp'
-            src: [ '**/*.styl', '!styles/util/**/*.styl' ]
-            dest: 'dist'
-            expand: true
-            ext: '.css'
+          cwd: '.tmp'
+          src: [ '**/*.styl', '!styles/util/**/*.styl' ]
+          dest: 'dist'
+          expand: true
+          ext: '.css'
         ]
       options:
         compress: false
-        import: [ 'nib' ]
+        import: [ 'nib', 'rupture' ]
         paths: [ 'src/styles/util' ]
+        use: [
+          require 'rupture'
+        ]
+        define:
+          asset: (file) ->
+            new (require 'stylus/lib/nodes/string') ('url({0})'.format ('../'.times (this.filename.split '/').length - 2) + file.string), ''
     coffee:
       compile:
         cwd: '.tmp'
@@ -195,8 +213,23 @@ module.exports = (grunt) ->
       dest: 'dist/assets'
     ]
 
-
-
+    watch:
+      scripts:
+        files: [ 'src/**/*.coffee' ]
+        tasks: [ 'newer:ejs:coffee', 'newer:coffee' ]
+        options: spawn: true
+      styles:
+        files: [ 'src/**/*.styl' ]
+        tasks: [ 'newer:ejs:stylus', 'newer:stylus' ]
+        options: spawn: true
+      templates:
+        files: [ 'src/**/*.pug' ]
+        tasks: [ 'newer:pug' ]
+        options: spawn: true
+      bower:
+        files: [ 'bower_components/*' ]
+        tasks: [ 'bower' ]
+        options: spawn: false
 
   grunt.loadNpmTasks 'grunt-ejs'
   grunt.loadNpmTasks 'grunt-browserify'
@@ -205,7 +238,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-stylus'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-bower'
+  grunt.loadNpmTasks 'grunt-newer'
 
   grunt.registerTask 'cleanup', ->
     rimraf.sync 'dist'
