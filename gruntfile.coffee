@@ -95,7 +95,7 @@ module.exports = (grunt) ->
         ]
         define:
           asset: (file) ->
-            new (require 'stylus/lib/nodes/string') ('url({0})'.format ('../'.times (this.filename.split '/').length - 2) + file.string), ''
+            new (require 'stylus/lib/nodes/string') ('url({0})'.format ('../'.times (this.filename.split '/').length - 2) + 'assets/' + file.string), ''
     coffee:
       compile:
         cwd: '.tmp'

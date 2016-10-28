@@ -4,10 +4,11 @@
 // conversations view
 .conversations
   border-right: 1px solid theme.gray
-  height: s('calc(100vh - %s)', dimensions.header.height)
+  height: s('calc(100vh - %s - %s)', dimensions.header.height, dimensions.page.conversations.search)
+  margin-bottom: dimensions.page.conversations.search
   width: dimensions.page.conversations.width
   position relative
-
+  overflow-y auto
   .hat
     display block
     position absolute
@@ -15,5 +16,5 @@
     left 0
     right 0
     top 0
-    background asset('assets/arrhat.svg') 0 100% / 100% no-repeat
+    background asset('arrhat.svg') 0 100% / 100% no-repeat
     pointer-events none
