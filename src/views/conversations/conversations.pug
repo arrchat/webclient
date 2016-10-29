@@ -1,15 +1,8 @@
 // conversations view
-.conversation-search
-.conversation-header messenger
+.conversation-options
+.conversation-header(ng-if='(provider.messenger | search).length > 0') messenger
+  .login fb@wvffle.net
+.conversation-item(ng-repeat='contact in provider.messenger | search')
+.conversation-header(ng-if='(provider.steam | search).length > 0') steam
   .login casper@wvffle.net
-.conversation-item
-.conversation-item
-.conversation-item
-.conversation-item
-.conversation-header steam
-  .login casper@wvffle.net
-.conversation-item
-.conversation-item
-.conversation-item
-.conversation-item
-//.hat
+.conversation-item(ng-repeat='contact in provider.steam | search')
