@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="31.678384"
-     inkscape:cx="-0.18243968"
-     inkscape:cy="6.4964298"
+     inkscape:cx="2.615963"
+     inkscape:cy="2.1599481"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -51,7 +51,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -61,13 +61,13 @@
      id="layer1"
      transform="translate(-263.12072,-281.76439)">
     <path
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.51649541;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#d5003c;stroke-width:0.51649541;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 264.41092,290.03702 c 3.02055,-1.93079 6.8729,-6.88473 7.37081,-6.88174 0.49792,0.003 1.57726,1.22652 1.22146,2.01006 -0.26102,0.57478 -1.55977,0.27925 -2.615,1.28367 0,0 -2.85735,2.95018 -4.96974,4.27827 -0.34461,0.21674 -1.35055,-0.471 -1.00753,-0.69027 z"
        id="path4170"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="szssss" />
     <path
-       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.51649541;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#d5003c;stroke-width:0.51649541;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 263.66564,282.68805 c 0.17091,0.78796 0.32684,1.58115 -0.17373,2.603 0,0 1.42418,0.36858 2.06044,0.72158 2.5829,1.43483 5.24474,3.65723 6.90766,5.55476 0.37377,0.42653 1.36753,-1.18338 0.87271,-1.46046 -4.35259,-2.43733 -9.66708,-7.41888 -9.66708,-7.41888 z"
        id="path4172"
        inkscape:connector-curvature="0"
