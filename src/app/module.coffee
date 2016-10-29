@@ -42,17 +42,18 @@ app.filter 'search', [
 app.run [
   '$rootScope'
   ($scope) ->
-    $scope.provider =
-      messenger: [
-        { provider: 'messenger fb@wvffle.net', name: 'name 1'}
-        { provider: 'messenger fb@wvffle.net', name: 'name 12'}
-        { provider: 'messenger fb@wvffle.net', name: 'name 13'}
-        { provider: 'messenger fb@wvffle.net', name: 'name 14'}
-      ]
-      steam: [
-        { provider: 'steam gaming@wvffle.net', name: 'name 15'}
-        { provider: 'steam gaming@wvffle.net', name: 'name 16'}
-        { provider: 'steam gaming@wvffle.net', name: 'name 17'}
-        { provider: 'steam gaming@wvffle.net', name: 'name 18'}
-      ]
+    $scope.providers =[
+        { name: 'messenger', login: 'fb@wvffle.net', contacts: [
+          { provider: 'messenger fb@wvffle.net', name: 'name 1'}
+          { provider: 'messenger fb@wvffle.net', name: 'name 12'}
+          { provider: 'messenger fb@wvffle.net', name: 'name 13'}
+          { provider: 'messenger fb@wvffle.net', name: 'name 14'}
+        ]}
+        { name: 'steam', login: 'gaming@wvffle.net', contacts: [
+          { provider: 'steam gaming@wvffle.net', name: 'name 15'}
+          { provider: 'steam gaming@wvffle.net', name: 'name 16'}
+          { provider: 'steam gaming@wvffle.net', name: 'name 17'}
+          { provider: 'steam gaming@wvffle.net', name: 'name 18'}
+        ]}
+    ]
 ]
