@@ -14,6 +14,18 @@
   display flex
   align-items center
   padding: 0 dimensions.section.padding
+  justify-content space-between
   .option
+    border-radius 50%
+    padding: s('%s', dimensions.header.icon.size / 10)
+    size: s('%s', dimensions.header.icon.size + dimensions.header.icon.size / 5)
+    box-shadow 0 2px 3px -1px transparent
+    transition background .25s ease, box-shadow .25s ease
+    &:active
+      background: theme.gray
+      transition background 0s ease, box-shadow .25s ease
+    &:hover
+      box-shadow: 0 2px 3px -1px theme.text-visible
     img
-      width 30px
+      cursor pointer
+      width: dimensions.header.icon.size
