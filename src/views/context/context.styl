@@ -1,0 +1,30 @@
+@import 'dimensions'
+@import 'position'
+@import 'theme'
+
+// context view
+.context
+  padding: dimensions.section.small-pad 0
+  min-width: dimensions.page.context.min-width
+  absolute 70px _ _ 70px
+  border-radius 3px
+  box-shadow: 0 -1px 4px -2px theme.gray, 0 2px 3px 1px theme.text
+  background: #fff
+  &-header
+    color: theme.text-visible
+    text-align right
+    text-transform uppercase
+    padding: dimensions.section.small-pad dimensions.section.padding
+    border-bottom: 1px solid theme.gray
+    .desc
+      color: theme.text
+      text-transform none
+  &-item
+    color: theme.text-visible
+    font-size 1.2em
+    padding: dimensions.section.small-pad dimensions.section.padding
+    border-bottom: 1px solid theme.gray
+    &:last-child
+      border: 0
+    &:hover
+      cursor pointer

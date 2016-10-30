@@ -18,6 +18,8 @@ global.$bang =
 
 global.$key = Mousetrap
 
+require './util'
+
 <% dirs.forEach(function(dir){ %>
 require '<%= dir %>'
 <% }) %>

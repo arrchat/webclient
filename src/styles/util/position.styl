@@ -1,17 +1,24 @@
 // position style
 pos(p = relative, t = null, r = null, b = null, l = null)
   position p
+    
   if t is a 'unit'
     top t
+
   if r is a 'unit'
     right r
+  else if t is a 'unit' and r is null
+    r = t
+    right r
+
   if b is a 'unit'
     bottom b
-  else if t is not null and b is null
+  else if t is a 'unit' and b is null
     bottom t
+
   if l is a 'unit'
     left l
-  else if r is not null and l is null
+  else if r is a 'unit' and l is null
     left r
 
 

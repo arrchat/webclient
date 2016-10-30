@@ -1,0 +1,4 @@
+// context view
+.context-header {{ context.data.name }}
+  .desc {{ context.data.desc }}
+.context-item(ng-repeat='(entry, data) in context.menu', ng-click='data.action()') {{ entry }}

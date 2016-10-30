@@ -4,12 +4,16 @@ module.exports = (grunt) ->
   coffee = require 'coffee-script'
   ejs = require 'ejs'
   fs = require 'fs'
+  path = require 'path'
   glob = require 'glob'
   util = require 'util'
   minimatch = require 'minimatch'
 
   # stylus plugins
   rupture = require 'rupture'
+
+  # globals
+  debug = true
 
   # string multiplication
   String::times = (times) ->
@@ -24,6 +28,7 @@ module.exports = (grunt) ->
     pkg: json
     browserify:
       app:
+        options: browserifyOptions: debug: debug
         files:
           'dist/app/module.js': 'dist/app/module.js'
           'dist/app/plugin-container.js': 'src/app/plugin-container.coffee'
@@ -44,7 +49,7 @@ module.exports = (grunt) ->
           ext: '.styl'
         ]
         options:
-          dirs: (->
+          dirs: do ->
             dirs = glob.sync 'src/*'
             exclude = [
               'src/app'
@@ -54,7 +59,6 @@ module.exports = (grunt) ->
             for dir in dirs
               [].push.apply res, glob.sync dir + '/**/*.styl'
             res
-          )()
       coffee:
         files: [
           cwd: 'src'
@@ -74,9 +78,19 @@ module.exports = (grunt) ->
             for dir in dirs
               [].push.apply res, glob.sync dir + '/*/index.coffee'
             for dir in res
-              dir = '../../' + dir
-                .replace 'src', 'dist'
+              dir = dir.split '/'
+              dir.shift()
+              dir.unshift '..'
+              dir = dir.join '/'
                 .replace /\.coffee$/i, '.js'
+          contexts: do ->
+            dirs = glob.sync 'src/services/context/*.coffee'
+            exclude = [ 'src/services/context/index.coffee' ]
+            dirs = dirs.filter (s) -> !~exclude.indexOf s
+            for dir in dirs
+              dir = path.basename dir
+                .replace /\.coffee$/i, ''
+
     stylus:
       compile:
         files: [
@@ -256,6 +270,8 @@ module.exports = (grunt) ->
     rimraf.sync 'dist'
   grunt.registerTask 'tmp', ->
     rimraf.sync '.tmp'
+  grunt.registerTask 'debugoff', ->
+    debug = false
 
   grunt.registerTask 'compile', [
     'ejs'
@@ -273,5 +289,10 @@ module.exports = (grunt) ->
     'cleanup'
     'compile'
     'browserify'
-    'uglify'
+    #'uglify'
+  ]
+
+  grunt.registerTask 'prod', [
+    'debugoff'
+    'default'
   ]
