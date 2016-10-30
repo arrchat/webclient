@@ -21,5 +21,14 @@ app.directive 'conversationSearch', [
           conversationSearch.class.add 'focus'
           $event.focus = conversationSearch
           input.focus()
+      input.on 'keypress', (e) ->
+        key = e.which or e.keyCode
+        if key == 13
+          conversation = q '.conversation-item'
+          conversation.emit 'click' if conversation?
+          $scope.search = ''
+        if key == 27 or key == 13
+          $blur e, true
+        $scope.apply()
 
 ]

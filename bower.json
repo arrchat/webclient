@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "waff-query": "master",
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "mousetrap": "^1.6.0"
   }
 }

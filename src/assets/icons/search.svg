@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="9.7881098"
-   height="9.7278795"
-   viewBox="0 0 9.78811 9.7278797"
+   width="10"
+   height="10"
+   viewBox="0 0 10 10"
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
@@ -26,23 +26,28 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="45.254834"
-     inkscape:cx="3.8716029"
+     inkscape:cx="3.5953893"
      inkscape:cy="1.6809546"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1280"
-     inkscape:window-height="971"
-     inkscape:window-x="-8"
-     inkscape:window-y="22"
-     inkscape:window-maximized="1"
+     inkscape:window-width="681"
+     inkscape:window-height="435"
+     inkscape:window-x="599"
+     inkscape:window-y="150"
+     inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
      showguides="true"
      inkscape:guide-bbox="true"
-     units="px" />
+     units="px">
+    <sodipodi:guide
+       position="5.0160388,4.6403883"
+       orientation="1,0"
+       id="guide4144" />
+  </sodipodi:namedview>
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -59,7 +64,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-264.35836,-281.45287)">
+     transform="translate(-264.35836,-281.18075)">
     <g
        transform="matrix(-1,0,0,1,540.62385,-3.0788849)"
        id="layer1-6"

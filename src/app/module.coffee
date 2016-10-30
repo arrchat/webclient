@@ -16,14 +16,11 @@ global.$bang =
   m: 'messenger'
   s: 'steam'
 
+global.$key = Mousetrap
+
 <% dirs.forEach(function(dir){ %>
 require '<%= dir %>'
 <% }) %>
-
-document.on 'click', (e) ->
-  if $event.focus? and not $event.focus.has e.target
-    $event.focus.class.remove 'focus'
-    $event.focus = null
 
 app.filter 'search', [
   '$rootScope'
@@ -32,7 +29,7 @@ app.filter 'search', [
       res = []
       if hay? and hay instanceof Array
         for element in hay
-          if $scope.search?
+          if $scope.search? and $event.focus == q '.conversation-search'
             query = $scope.search.toLowerCase()
             if $scope.search[0] == '!'
               # bang!
@@ -52,10 +49,21 @@ app.filter 'search', [
       res
 ]
 
-# DEBUG
 app.run [
   '$rootScope'
   ($scope) ->
+    global.$blur = (e, f) ->
+      if $event.focus? and (f == true or not $event.focus.has e.target)
+        document.body.focus()
+        $event.focus.class.remove 'focus'
+        $event.focus = null
+        $scope.apply()
+    document.on 'click', $blur
+    $scope.apply = (fn) ->
+      if @$root.$$phase == '$apply' or @$root.$$phase == '$digest'
+        fn() if fn? and typeof fn == 'function'
+      else @$apply fn
+    # DEBUG
     $scope.providers = [
         { name: 'messenger', login: 'fb@wvffle.net', contacts: [
           { name: 'JuniorJPDJ'}
@@ -79,6 +87,4 @@ app.run [
     for provider in $scope.providers
       for contact in provider.contacts
         contact.provider = provider.name.toLowerCase() + ':' + provider.login.toLowerCase()
-    console.log $scope.providers
-
 ]

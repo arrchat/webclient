@@ -198,10 +198,15 @@ module.exports = (grunt) ->
       views:
         cwd: 'src/'
         src: 'views/**/*.pug'
-        dest: 'dist'
+        dest: '.tmp'
         expand: true
         ext: '.html'
-
+    html: views: files: [
+      cwd: '.tmp/'
+      src: 'views/**/*.html'
+      dest: 'dist'
+      expand: true
+    ]
     bower: dev:
       dest: 'dist/bower/'
       options:
@@ -242,6 +247,11 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-bower'
   grunt.loadNpmTasks 'grunt-newer'
 
+  grunt.registerMultiTask 'html', ->
+    for file in @files
+      w = grunt.file.read file.src[0]
+      grunt.file.write file.dest, '<!DOCTYPE html><html><body>{0}</body></html>'.format w
+    grunt.log.writeln 'Created {0} files'.format @files.length
   grunt.registerTask 'cleanup', ->
     rimraf.sync 'dist'
   grunt.registerTask 'tmp', ->
@@ -253,6 +263,7 @@ module.exports = (grunt) ->
     'coffee'
     'bower'
     'pug'
+    'html'
     'copy'
     'tmp'
   ]
