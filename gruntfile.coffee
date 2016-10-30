@@ -289,7 +289,7 @@ module.exports = (grunt) ->
     'cleanup'
     'compile'
     'browserify'
-    #'uglify'
+    'uglify'
   ]
 
   grunt.registerTask 'prod', [
