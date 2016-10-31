@@ -9,7 +9,7 @@ app.directive 'conversationHeader', [
         rel: 'stylesheet',
         href: 'views/conversation-header/conversation-header.css'
     restrict: 'C'
-    #templateUrl: 'views/conversation-header/conversation-header.html'
+    # templateUrl: 'views/conversation-header/conversation-header.html'
     link: (scope, $el) ->
       conversationHeader = $el[0]
 

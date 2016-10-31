@@ -4,37 +4,53 @@
 // message view
 .message
   box-shadow: s('0 %s 0 %s %s', dimensions.section.padding * -1 - 1, dimensions.section.padding * -1, theme.gray)
-  padding: dimensions.section.padding
+
   display flex
+
+  padding: dimensions.section.padding
+
   .icon
     background asset('favicon.svg') 50% / cover no-repeat
     size: dimensions.page.conversations.icon.size
     border-radius 50%
+
     margin-right: dimensions.section.padding
+
     position relative
     margin-bottom -100vh
+
   .content
     font-size 1.2em
     line-height 1.2em
+
     color: theme.text
+
     .info
       display flex
       align-items center
       color: theme.text-visible
+
       margin-bottom: dimensions.section.small-pad
+
       .name
         margin-right: dimensions.section.small-pad
         font-size 1.08em
+
       .time
         font-size .8em
+
   &.next
     box-shadow none
+
     margin-top: dimensions.section.padding * -2 + dimensions.section.small-pad
+
     .icon
       opacity 0
+
       height 1px
-    .content
-      .info
-        display none
+
+    .content .info
+      display none
+
   &:first-child
     border 0

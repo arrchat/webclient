@@ -6,17 +6,17 @@
 .conversation-search
   input
     absolute 0 0
-    padding: dimensions.section.padding
-    color: theme.text-visible
-    width 100%
-    border 0
     background #fff
-    pointer-events none
+    border 0
+    color: theme.text-visible
     opacity 0
+    padding: dimensions.section.padding
+    pointer-events none
     transform: s('translateX(-%s)', dimensions.section.padding)
     transition transform .25s ease, opacity .25s ease
-  &.focus
-    input
-      transform translateX(0)
-      opacity 1
-      pointer-events all
+    width 100%
+
+  &.focus input
+    transform translateX(0)
+    opacity 1
+    pointer-events all

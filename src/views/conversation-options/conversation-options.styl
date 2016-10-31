@@ -4,28 +4,32 @@
 
 // conversation-options view
 .conversation-options
-  border-top: 1px solid theme.gray
-  border-right: 1px solid theme.gray
-  height: dimensions.page.conversations.search
-  background #fff
-  fixed _ _ 0
-  z-index 3
-  width: dimensions.page.conversations.width
-  display flex
   align-items center
-  padding: 0 dimensions.section.padding
+  background #fff
+  border-right: 1px solid theme.gray
+  border-top: 1px solid theme.gray
+  display flex
+  fixed _ _ 0
+  height: dimensions.page.conversations.search
   justify-content space-between
+  padding: 0 dimensions.section.padding
+  width: dimensions.page.conversations.width
+  z-index 3
+
   .option
     border-radius 50%
+    box-shadow 0 2px 3px -1px transparent
     padding: s('%s', dimensions.header.icon.size / 10)
     size: s('%s', dimensions.header.icon.size + dimensions.header.icon.size / 5)
-    box-shadow 0 2px 3px -1px transparent
     transition background .25s ease, box-shadow .25s ease
+
     &:active
       background: theme.gray
       transition background 0s ease, box-shadow .25s ease
+
     &:hover
       box-shadow: 0 2px 3px -1px theme.text-visible
+
     img
       cursor pointer
       width: dimensions.header.icon.size

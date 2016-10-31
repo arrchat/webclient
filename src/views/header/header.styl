@@ -3,36 +3,42 @@
 @import 'dimensions'
 
 .header
+  border-bottom: 1px solid theme.gray
   color: theme.base
   height: dimensions.header.height
   width: dimensions.header.width
-  border-bottom: 1px solid theme.gray
+
   .logo
-    font-weight 900
+    border-right: 1px solid theme.gray
+    display flex
+    float left
     font-size 3em
+    font-weight 900
     line-height: dimensions.header.height - dimensions.header.padding * 2
     margin: dimensions.header.padding 0
     width: dimensions.page.conversations.width
-    float left
-    display flex
     justify-content center
-    border-right: 1px solid theme.gray
+
+
     img
-      size: dimensions.header.height - dimensions.header.padding * 2
-      margin: 0 dimensions.header.padding 0 0
       float left
+      margin: 0 dimensions.header.padding 0 0
+      size: dimensions.header.height - dimensions.header.padding * 2
+
   .right
+    display flex
     float right
     margin: dimensions.header.padding dimensions.section.padding
-    display flex
+
     a
+      align-items center
+      color: theme.text
+      display flex
       font-size 1.6em
       font-weight 100
-      color: theme.text
       line-height: dimensions.header.height - dimensions.header.padding * 2
       margin: 0 dimensions.header.padding
-      display flex
-      align-items center
+
       img
-        width: dimensions.header.icon.size
         margin-right: dimensions.section.small-pad
+        width: dimensions.header.icon.size

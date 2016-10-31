@@ -1,0 +1,21 @@
+{
+  "validateAttributeSeparator": ", ",
+  "requireClassLiteralsBeforeAttributes": true,
+  "requireIdLiteralsBeforeAttributes": true,
+  "disallowDuplicateAttributes": true,
+  "disallowIdAttributeWithStaticValue": true,
+  "disallowLegacyMixinCall": true,
+  "disallowMultipleLineBreaks": true,
+  "disallowSpacesInsideAttributeBrackets": true,
+  "disallowSpecificTags": [
+    "b", "i", "s", "u",
+    "marquee", "table",
+    "font", "div"
+  ],
+  "requireLowerCaseAttributes": true,
+  "requireLowerCaseTags": true,
+  "requireStrictEqualityOperators": true,
+  "validateAttributeQuoteMarks": "'",
+  "validateDivTags": true,
+  "validateIndentation": 2
+}

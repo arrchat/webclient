@@ -1,7 +1,13 @@
-node_modules
+# intellij idea
 .idea
+
+# dependencies
+node_modules
 bower_components
+
+# dist
 dist
-TUDU
-npm-debug.log
 .tmp
+
+# errors
+npm-debug.log

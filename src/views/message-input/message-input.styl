@@ -4,16 +4,17 @@
 
 // message-input view
 .message-input
-  border-top: 1px solid theme.gray
-  border-right: 1px solid theme.gray
-  height: dimensions.page.conversations.search
   background #fff
+  border-right: 1px solid theme.gray
+  border-top: 1px solid theme.gray
   fixed _ _ 0
-  z-index 3
+  height: dimensions.page.conversations.search
   width: s('calc(100vw - %s)', dimensions.page.conversations.width)
+  z-index 3
+
   input
-    padding: dimensions.section.padding
-    color: theme.text-visible
-    width 100%
-    border 0
     background #fff
+    border 0
+    color: theme.text-visible
+    padding: dimensions.section.padding
+    width 100%
