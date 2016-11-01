@@ -6,8 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "authors": [
+    "wvffle <casper@wvffle.net>"
+  ],
   "license": "AGPL-3.0+",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arrchat/webclient.git"
+  },
   "devDependencies": {
     "coffee-script": "^1.10.0",
     "ejs": "^2.5.1",
