@@ -54,7 +54,7 @@ module.exports = (grunt) ->
             exclude = [
               'src/app'
             ]
-            dirs = dirs.filter (s) -> -1 == exclude.indexOf s
+            dirs = dirs.filter (s) -> -1 is exclude.indexOf s
             res = []
             for dir in dirs
               [].push.apply res, glob.sync dir + '/**/*.styl'
@@ -73,7 +73,7 @@ module.exports = (grunt) ->
             exclude = [
               'src/app'
             ]
-            dirs = dirs.filter (s) -> -1 == exclude.indexOf s
+            dirs = dirs.filter (s) -> -1 is exclude.indexOf s
             res = []
             for dir in dirs
               [].push.apply res, glob.sync dir + '/*/index.coffee'
@@ -109,7 +109,7 @@ module.exports = (grunt) ->
         ]
         define:
           asset: (file) ->
-            new (require 'stylus/lib/nodes/string') ('url({0})'.format ('../'.times (this.filename.split '/').length - 2) + 'assets/' + file.string), ''
+            new (require 'stylus/lib/nodes/string') ('url({0})'.format ('../'.times (@filename.split '/').length - 2) + 'assets/' + file.string), ''
     coffee:
       compile:
         cwd: '.tmp'
@@ -122,86 +122,86 @@ module.exports = (grunt) ->
     pug:
       templates:
         options:
-           data:  ->
-             # index.html dir
-             main = 'homepage'
-             # scripts loaded after body dir
-             after = 'afterload'
+          data: ->
+            # index.html dir
+            main = 'homepage'
+            # scripts loaded after body dir
+            after = 'afterload'
 
-             res = obj = {}
-             ix = ''
+            res = obj = {}
+            ix = ''
 
-             template =
-               css: '<link rel=\'stylesheet\' href=\'%s\'>',
-               js:  '<script src=\'%s\'></script>'
+            template =
+              css: '<link rel=\'stylesheet\' href=\'%s\'>',
+              js:  '<script src=\'%s\'></script>'
 
-             files =
-               css: (src) ->
-                 grunt.file.expand cwd: 'dist', [
-                   'styles/reset.css'
-                   'styles/importer.css'
-                   'styles/**/*.css'
-                 ]
-               js: (src) ->
-                 grunt.file.expand cwd: 'dist', [
-                   'scripts/**/*.js'
-                   # folder support
-                   unless !src or src.endsWith '.js' then src+'/**/*.js' else '!'+(+new Date)+'.js'
-                 ]
-               css_bower: (src) ->
-                 grunt.file.expand cwd: 'dist', [
-                   'bower/**/*.css'
-                 ]
-               js_bower: (src) ->
-                 grunt.file.expand cwd: 'dist', [
-                   'bower/**/*.js'
-                 ]
-             for namespace of files
-               type = namespace.split('_')[0]
-               itype = namespace.split('_')[1]
+            files =
+              css: (src) ->
+                grunt.file.expand cwd: 'dist', [
+                  'styles/reset.css'
+                  'styles/importer.css'
+                  'styles/**/*.css'
+                ]
+              js: (src) ->
+                grunt.file.expand cwd: 'dist', [
+                  'scripts/**/*.js'
+                  # folder support
+                  unless not src or src.endsWith '.js' then src + '/**/*.js' else '!' + (+new Date) + '.js'
+                ]
+              css_bower: (src) ->
+                grunt.file.expand cwd: 'dist', [
+                  'bower/**/*.css'
+                ]
+              js_bower: (src) ->
+                grunt.file.expand cwd: 'dist', [
+                  'bower/**/*.js'
+                ]
+            for namespace of files
+              type = namespace.split('_')[0]
+              itype = namespace.split('_')[1]
 
-               do(namespace, type, itype) ->
-                 res[namespace] = (src) ->
-                   r = ''
-                   obj[namespace] ?= {}
-                   obj[namespace].exclude ?= []
-                   obj[namespace].files = files[namespace](src)
-                   for ex in obj[namespace].exclude
-                     index = obj[namespace].files.indexOf ex
-                     obj[namespace].files.splice index, 1 unless index == -1
-                   unless src?
-                     for nfile in obj[namespace].files
-                       r += util.format template[type], ix + nfile
-                     return r
+              do(namespace, type, itype) ->
+                res[namespace] = (src) ->
+                  r = ''
+                  obj[namespace] ?= {}
+                  obj[namespace].exclude ?= []
+                  obj[namespace].files = files[namespace](src)
+                  for ex in obj[namespace].exclude
+                    index = obj[namespace].files.indexOf ex
+                    obj[namespace].files.splice index, 1 unless index is -1
+                  unless src?
+                    for nfile in obj[namespace].files
+                      r += util.format template[type], ix + nfile
+                    return r
 
-                   pre = ''
-                   nope = src[0] == '!'
-                   obj[namespace].files = obj[namespace].files.filter minimatch.filter (if -1 == src.indexOf after then '!' else '')+'scripts/*/' + after + '/**/*.js', {}
-                   src += '/**/*.'+type unless src.endsWith '.'+type
-                   src = src.slice 1 if nope
+                  pre = ''
+                  nope = src[0] is '!'
+                  obj[namespace].files = obj[namespace].files.filter minimatch.filter (if -1 is src.indexOf after then '!' else '') + 'scripts/*/' + after + '/**/*.js', {}
+                  src += '/**/*.' + type unless src.endsWith '.' + type
+                  src = src.slice 1 if nope
 
 
-                   switch type
-                     when 'js'
-                       pre += 'scripts/'
-                     when 'css'
-                       pre += 'styles/'
+                  switch type
+                    when 'js'
+                      pre += 'scripts/'
+                    when 'css'
+                      pre += 'styles/'
 
-                   pre += '' + itype + '/' if itype?
+                  pre += '' + itype + '/' if itype?
 
-                   exclude = obj[namespace].files.filter minimatch.filter pre+'*.'+type, {}
-                   exdynamic = obj[namespace].files.filter minimatch.filter pre+src, {}
+                  exclude = obj[namespace].files.filter minimatch.filter pre + '*.' + type, {}
+                  exdynamic = obj[namespace].files.filter minimatch.filter pre + src, {}
 
-                   for ex in exdynamic
-                     exclude.push ex if -1 == exclude.indexOf ex
-                   for ex in exclude
-                     index = obj[namespace].files.indexOf ex
-                     entry = obj[namespace].files.splice index, 1
-                     unless nope
-                       obj[namespace].exclude.push entry[0]
-                       r += util.format template[type], ix+entry[0]
-                   return r
-             res
+                  for ex in exdynamic
+                    exclude.push ex if -1 is exclude.indexOf ex
+                  for ex in exclude
+                    index = obj[namespace].files.indexOf ex
+                    entry = obj[namespace].files.splice index, 1
+                    unless nope
+                      obj[namespace].exclude.push entry[0]
+                      r += util.format template[type], ix + entry[0]
+                  return r
+            res
         files: [
           cwd: 'src/templates'
           src: '**/*.pug'
@@ -270,8 +270,6 @@ module.exports = (grunt) ->
     rimraf.sync 'dist'
   grunt.registerTask 'tmp', ->
     rimraf.sync '.tmp'
-  grunt.registerTask 'debugoff', ->
-    debug = false
 
   grunt.registerTask 'compile', [
     'ejs'
@@ -289,10 +287,9 @@ module.exports = (grunt) ->
     'cleanup'
     'compile'
     'browserify'
-    'uglify'
   ]
 
   grunt.registerTask 'prod', [
-    'debugoff'
     'default'
+    'uglify'
   ]

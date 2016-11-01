@@ -54,17 +54,22 @@ app.filter 'search', [
 app.run [
   '$rootScope'
   ($scope) ->
+
     global.$blur = (e, f) ->
       if $event.focus? and (f is true or not $event.focus.has e.target)
         document.body.focus()
         $event.focus.class.remove 'focus'
         $event.focus = null
-        $scope.apply()
+      $scope.context = null if $scope.context?
+      $scope.apply()
+
     document.on 'click', $blur
+
     $scope.apply = (fn) ->
       if @$root.$$phase is '$apply' or @$root.$$phase is '$digest'
         fn() if fn? and typeof fn is 'function'
       else @$apply fn
+
     # DEBUG
     $scope.providers = [
         { name: 'messenger', login: 'fb@wvffle.net', contacts: [

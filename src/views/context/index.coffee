@@ -9,7 +9,7 @@ app.directive 'contextMenu', [
       context = $el[0]
       context.on 'contextmenu', (e) ->
         e.preventDefault()
-        $context.open $attr.contextMenu, scope[$attr.contextMenu]
+        $context.open $attr.contextMenu, scope[$attr.contextMenu], e
         false
 ]
 
@@ -25,5 +25,11 @@ app.directive 'context', [
     templateUrl: 'views/context/context.html'
     link: (scope, $el) ->
       context = $el[0]
+      $scope.$watch 'context', (v) ->
+        if v?
+          context.css display: 'block'
+        else
+          context.css display: 'none'
+
 
 ]
