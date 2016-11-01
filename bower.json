@@ -18,6 +18,9 @@
   "dependencies": {
     "waff-query": "master",
     "angular": "^1.5.8",
-    "mousetrap": "^1.6.0"
+    "mousetrap": "^1.6.0",
+    "lodash": "^4.16.5",
+    "reconnectingWebsocket": "^1.0.0",
+    "msgpack-lite": "^0.1.21"
   }
 }

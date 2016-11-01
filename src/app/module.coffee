@@ -9,6 +9,8 @@ global.$dom =
 global.$load =
   views: {}
 
+global.$debug = true
+
 global.$event =
   focus: null
 
@@ -53,8 +55,14 @@ app.filter 'search', [
 
 app.run [
   '$rootScope'
-  ($scope) ->
+  'proto'
+  ($scope, $proto) ->
 
+    $proto.socket.on 'connect', ->
+      connect = new $proto.packet $proto.packet.type.client.get.providers
+      connect.send().then (res) ->
+        $scope.providers = res.providers
+        $scope.apply()
     global.$blur = (e, f) ->
       if $event.focus? and (f is true or not $event.focus.has e.target)
         document.body.focus()
