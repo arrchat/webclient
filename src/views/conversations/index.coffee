@@ -3,8 +3,8 @@
 app.directive 'conversations', [
   '$rootScope'
   ($scope) ->
-    unless $load.views['conversations'] == !0
-      $load.views['conversations'] = !0
+    unless $load.views['conversations'] is true
+      $load.views['conversations'] = true
       $dom.head.append e 'link',
         rel: 'stylesheet',
         href: 'views/conversations/conversations.css'

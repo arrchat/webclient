@@ -4,8 +4,8 @@ app.directive 'message', [
   '$rootScope'
   '$timeout'
   ($scope, $timeout) ->
-    unless $load.views['message'] == !0
-      $load.views['message'] = !0
+    unless $load.views['message'] is true
+      $load.views['message'] = true
       $dom.head.append e 'link',
         rel: 'stylesheet',
         href: 'views/message/message.css'

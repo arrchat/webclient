@@ -3,8 +3,8 @@
 app.directive 'messageInput', [
   '$rootScope'
   ($scope) ->
-    unless $load.views['message-input'] == !0
-      $load.views['message-input'] = !0
+    unless $load.views['message-input'] is true
+      $load.views['message-input'] = true
       $dom.head.append e 'link',
         rel: 'stylesheet',
         href: 'views/message-input/message-input.css'

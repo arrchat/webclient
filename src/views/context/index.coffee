@@ -16,8 +16,8 @@ app.directive 'contextMenu', [
 app.directive 'context', [
   '$rootScope'
   ($scope, $context) ->
-    unless $load.views['context'] == !0
-      $load.views['context'] = !0
+    unless $load.views['context'] is true
+      $load.views['context'] = true
       $dom.head.append e 'link',
         rel: 'stylesheet',
         href: 'views/context/context.css'
@@ -25,5 +25,5 @@ app.directive 'context', [
     templateUrl: 'views/context/context.html'
     link: (scope, $el) ->
       context = $el[0]
-      
+
 ]

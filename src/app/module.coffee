@@ -31,9 +31,9 @@ app.filter 'search', [
       res = []
       if hay? and hay instanceof Array
         for element in hay
-          if $scope.search? and $event.focus == q '.conversation-search'
+          if $scope.search? and $event.focus is q '.conversation-search'
             query = $scope.search.toLowerCase()
-            if $scope.search[0] == '!'
+            if $scope.search[0] is '!'
               # bang!
               query = query.split ' '
               bang = query.shift().replace /^!/, ''
@@ -55,36 +55,36 @@ app.run [
   '$rootScope'
   ($scope) ->
     global.$blur = (e, f) ->
-      if $event.focus? and (f == true or not $event.focus.has e.target)
+      if $event.focus? and (f is true or not $event.focus.has e.target)
         document.body.focus()
         $event.focus.class.remove 'focus'
         $event.focus = null
         $scope.apply()
     document.on 'click', $blur
     $scope.apply = (fn) ->
-      if @$root.$$phase == '$apply' or @$root.$$phase == '$digest'
-        fn() if fn? and typeof fn == 'function'
+      if @$root.$$phase is '$apply' or @$root.$$phase is '$digest'
+        fn() if fn? and typeof fn is 'function'
       else @$apply fn
     # DEBUG
     $scope.providers = [
         { name: 'messenger', login: 'fb@wvffle.net', contacts: [
-          { name: 'JuniorJPDJ'}
-          { name: 'Artur'}
-          { name: 'arrchat bot'}
-          { name: 'waff'}
-        ]}
+          { name: 'JuniorJPDJ' }
+          { name: 'Artur' }
+          { name: 'arrchat bot' }
+          { name: 'waff' }
+        ] }
         { name: 'messenger', login: 'waff@wvffle.net', contacts: [
-          { name: 'Casper Sewryn'}
-          { name: 'Ola'}
-          { name: 'Arturina'}
-          { name: 'Karolina'}
-        ]}
+          { name: 'Casper Sewryn' }
+          { name: 'Ola' }
+          { name: 'Arturina' }
+          { name: 'Karolina' }
+        ] }
         { name: 'steam', login: 'gaming@wvffle.net', contacts: [
-          { name: 'ju-cos-do testu'}
-          { name: 'wvffle'}
-          { name: 'mehwaff'}
-          { name: 'archtur'}
-        ]}
+          { name: 'ju-cos-do testu' }
+          { name: 'wvffle' }
+          { name: 'mehwaff' }
+          { name: 'archtur' }
+        ] }
     ]
     for provider in $scope.providers
       for contact in provider.contacts

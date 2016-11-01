@@ -2,8 +2,8 @@
 app.directive 'header', [
   '$rootScope'
   ($scope) ->
-    unless $load.views['header'] == !0
-      $load.views['header'] = !0
+    unless $load.views['header'] is true
+      $load.views['header'] = true
       $dom.head.append e 'link',
         rel: 'stylesheet',
         href: 'views/header/header.css'

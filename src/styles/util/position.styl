@@ -1,7 +1,7 @@
 // position style
 pos(p = relative, t = null, r = null, b = null, l = null)
   position p
-    
+
   if t is a 'unit'
     top t
 
@@ -20,7 +20,6 @@ pos(p = relative, t = null, r = null, b = null, l = null)
     left l
   else if r is a 'unit' and l is null
     left r
-
 
 relative(t = null, r = null, b = null, l = null)
   pos(relative, t, r, b, l)

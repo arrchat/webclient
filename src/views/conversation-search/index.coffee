@@ -4,8 +4,8 @@ app.directive 'conversationSearch', [
   '$rootScope'
   '$timeout'
   ($scope, $timeout) ->
-    unless $load.views['conversation-search'] == !0
-      $load.views['conversation-search'] = !0
+    unless $load.views['conversation-search'] is true
+      $load.views['conversation-search'] = true
       $dom.head.append e 'link',
         rel: 'stylesheet',
         href: 'views/conversation-search/conversation-search.css'

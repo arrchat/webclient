@@ -3,8 +3,8 @@
 app.directive 'main', [
   '$rootScope'
   ($scope) ->
-    unless $load.views['main'] == !0
-      $load.views['main'] = !0
+    unless $load.views['main'] is true
+      $load.views['main'] = true
       $dom.head.append e 'link',
         rel: 'stylesheet',
         href: 'views/main/main.css'
