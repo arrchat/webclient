@@ -5,7 +5,7 @@
   "authors": [
     "wvffle <casper@wvffle.net>"
   ],
-  "license": "MIT",
+  "license": "AGPL-3.0+",
   "homepage": "",
   "private": true,
   "ignore": [
