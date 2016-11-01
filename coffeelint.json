@@ -16,6 +16,7 @@
     "level": "error"
   },
   "cyclomatic_complexity": {
+    "value": 14,
     "level": "warn"
   },
   "no_this": {
