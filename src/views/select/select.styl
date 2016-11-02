@@ -1,0 +1,40 @@
+@import 'theme'
+@import 'dimensions'
+@import 'position'
+
+// select view
+.select
+  cursor pointer
+  relative _
+
+  input
+    background #fff
+    pointer-events none
+    width 100%
+
+  .options
+    absolute _ _ 10px 0
+    background #fff
+    box-shadow: 0 -1px 4px -2px theme.gray, 0 2px 3px 1px theme.text
+    opacity 0
+    pointer-events none
+    transform translateY(100%)
+    transition bottom .25s ease, opacity .25s, ease
+    width 100%
+
+    .option
+      border-bottom: 1px solid theme.gray
+      color: theme.text
+      cursor pointer
+      padding: dimensions.section.small-pad
+
+      &:hover
+        background: theme.gray
+
+      &:last-child
+        border 0
+
+  &.focus .options
+    absolute _ _ 0 0
+    opacity 1
+    pointer-events all

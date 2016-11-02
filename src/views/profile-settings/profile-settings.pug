@@ -1,0 +1,16 @@
+// profile-settings view
+label(for='sthtoreplace') Profile name
+input.profile-name(ng-model='profile.name')
+label(for='sthtoreplace') Profile description
+textarea.profile-desc {{ profile.desc }}
+.auto
+  label(for='sthtoreplace') Storage provider
+  select(ng-model='profile.storage')
+    option LocalStorage
+    option SessionStorage
+.auto
+  label(for='sthtoreplace') Crypt provider
+  select(ng-model='profile.crypt')
+    option no encryption
+
+pre {{ profile }}

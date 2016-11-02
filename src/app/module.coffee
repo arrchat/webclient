@@ -70,6 +70,7 @@ app.run [
           provider.color = '#' + color
         $scope.providers = res.providers
         $scope.apply()
+        
     global.$blur = (e, f) ->
       if $event.focus? and (f is true or not $event.focus.has e.target)
         document.body.focus()
@@ -87,6 +88,7 @@ app.run [
       else @$apply fn
 
     $scope.menu = 'profiles'
+    $scope.main = 'messages'
 
     # DEBUG
     $scope.profiles = [

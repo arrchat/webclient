@@ -1,0 +1,29 @@
+@import 'dimensions'
+@import 'theme'
+
+// profile-settings view
+.profile-settings
+  padding: dimensions.section.padding
+
+  input
+  textarea
+    border 0
+    border-bottom: 1px solid theme.gray
+    // border-radius 3px
+    color: theme.text-visible
+    display block
+    font-family Catamaran, sans-serif
+    font-size 1.2em
+    padding: dimensions.section.small-pad
+    resize none
+    width: 60%
+
+  label
+    color: theme.text-visible
+    display block
+    font-size 1.4em
+    line-height 1.5em
+    padding: dimensions.section.padding dimensions.section.small-pad
+
+  .auto
+    display inline-block
