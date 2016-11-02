@@ -1,7 +1,6 @@
 // conversation-item view
 .info
-  .icon
-    .status
-  .name {{contact.name}}
-    .last-message last message meh!
-.options
+  .icon(ng-style='{ backgroundImage: "url(" + (item.logo) + ")", backgroundColor: item.color }')
+    .status(ng-if='item.status != null')
+  .name {{ item.visibleName || item.name }}
+    .desc {{ item.desc }}

@@ -12,5 +12,6 @@ app.directive 'conversationItem', [
     templateUrl: 'views/conversation-item/conversation-item.html'
     link: (scope, $el) ->
       conversationItem = $el[0]
-
+      conversationItem.on 'click', ->
+        scope.item.open()
 ]

@@ -61,6 +61,13 @@ app.run [
     $proto.socket.on 'connect', ->
       connect = new $proto.packet $proto.packet.type.client.get.providers
       connect.send().then (res) ->
+        for provider in res.providers
+          color = provider.color
+          color = 0xFFFFFFFF + +provider.color + 1 if color < 0
+          color = color.toString 16
+          while color.length < 6
+              color = '0' + color
+          provider.color = '#' + color
         $scope.providers = res.providers
         $scope.apply()
     global.$blur = (e, f) ->
@@ -68,6 +75,7 @@ app.run [
         document.body.focus()
         $event.focus.class.remove 'focus'
         $event.focus = null
+      $scope.menu = 'contacts' unless $scope.menu is 'profiles'
       $scope.context = null if $scope.context?
       $scope.apply()
 
@@ -77,6 +85,8 @@ app.run [
       if @$root.$$phase is '$apply' or @$root.$$phase is '$digest'
         fn() if fn? and typeof fn is 'function'
       else @$apply fn
+
+    $scope.menu = 'profiles'
 
     # DEBUG
     $scope.providers = [

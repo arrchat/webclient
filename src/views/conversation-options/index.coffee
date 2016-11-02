@@ -14,3 +14,21 @@ app.directive 'conversationOptions', [
       conversationOptions = $el[0]
 
 ]
+
+app.directive 'selectProviders', [
+  '$rootScope'
+  '$timeout'
+  ($scope, $timeout) ->
+    restrict: 'C'
+    link: (scope, $el) ->
+      selectProviders = $el[0]
+      selectProviders.on 'click', (e) ->
+        e.preventDefault()
+        $timeout =>
+          $event.focus = @
+          $scope.menu = 'providers'
+        $scope.apply()
+        console.log 'meh!'
+
+
+]
