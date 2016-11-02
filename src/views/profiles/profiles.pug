@@ -1,1 +1,21 @@
 // profiles view
+.header
+  .logo
+    img(src='assets/arrchat.svg')
+    | arrchat
+.profile-container
+  .actions
+    .action.profile-create
+      img(src='assets/icons/plus.svg')
+      | create profile
+    .action.profile-import
+      img(src='assets/icons/cat.svg')
+      |import profile
+  .profile-list
+    .profile(ng-repeat='profile in profiles', ng-click='profile.load()')
+      .name {{ profile.name }}
+        .desc {{ profile.desc }}
+      .type {{ profile.type }}
+
+// unfortunately, no :'(
+// img.cat(src='assets/arrchat.svg')

@@ -89,6 +89,9 @@ app.run [
     $scope.menu = 'profiles'
 
     # DEBUG
+    $scope.profiles = [
+      { name: 'meh', desc: 'waff', type: 'local' }
+    ]
     $scope.providers = [
         { name: 'messenger', login: 'fb@wvffle.net', contacts: [
           { name: 'JuniorJPDJ' }
