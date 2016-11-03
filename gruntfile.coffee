@@ -25,10 +25,9 @@ module.exports = (grunt) ->
       if a? then a else ''
 
   # utils
-
   getService = (name) ->
     dirs = glob.sync 'src/services/{0}/*.coffee'.format name
-    exclude = [ 'src/services/{}/index.coffee'.format name ]
+    exclude = [ 'src/services/{0}/index.coffee'.format name ]
     dirs = dirs.filter (s) -> !~exclude.indexOf s
     for dir in dirs
       dir = path.basename dir
@@ -95,7 +94,7 @@ module.exports = (grunt) ->
                 .replace /\.coffee$/i, '.js'
 
           contexts: getService 'context'
-          storages: getService 'sotrage'
+          storages: getService 'storage'
           cryptos:  getService 'crypt'
 
     stylus:

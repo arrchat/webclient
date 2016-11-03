@@ -6,11 +6,11 @@ rstorages = {}
 rstorages['<%= storage %>'] = require './<%= storage %>'
 <% }) %>
 
+# Storage id's
 storages = [
   'LocalStorage', 'SessionStorage'
-].map (e) -> rstorages[e] or {}
+].map (e, i) -> new rstorages[e] i, e
 
-console.debug storages
 
 app.factory 'storage', [
   '$rootScope'
@@ -39,6 +39,8 @@ app.factory 'storage', [
         .catch ->
           # TODO
           # display error
-
+    for store, i in storages
+      storage[i] = store
+    console.debug '[storage]', storage
     storage
 ]

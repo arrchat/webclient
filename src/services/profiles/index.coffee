@@ -9,7 +9,7 @@ app.factory 'profiles', [
     # profiles service logic
 
     profiles.new = ->
-      $scope.profile = new Profile $storage.local, $crypt
+      $scope.profile = new Profile $storage, $crypt
       $scope.main = 'profile'
 
 
