@@ -24,6 +24,16 @@ module.exports = (grunt) ->
       a = args[a.slice(1, -1)]
       if a? then a else ''
 
+  # utils
+
+  getService = (name) ->
+    dirs = glob.sync 'src/services/{0}/*.coffee'.format name
+    exclude = [ 'src/services/{}/index.coffee'.format name ]
+    dirs = dirs.filter (s) -> !~exclude.indexOf s
+    for dir in dirs
+      dir = path.basename dir
+        .replace /\.coffee$/i, ''
+
   grunt.initConfig
     pkg: json
     browserify:
@@ -83,13 +93,10 @@ module.exports = (grunt) ->
               dir.unshift '..'
               dir = dir.join '/'
                 .replace /\.coffee$/i, '.js'
-          contexts: do ->
-            dirs = glob.sync 'src/services/context/*.coffee'
-            exclude = [ 'src/services/context/index.coffee' ]
-            dirs = dirs.filter (s) -> !~exclude.indexOf s
-            for dir in dirs
-              dir = path.basename dir
-                .replace /\.coffee$/i, ''
+
+          contexts: getService 'context'
+          storages: getService 'sotrage'
+          cryptos:  getService 'crypt'
 
     stylus:
       compile:
