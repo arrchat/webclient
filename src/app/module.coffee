@@ -10,6 +10,8 @@ global.$load =
   views: {}
 
 global.$debug = true
+console.debug = ->
+  console.log.apply console, arguments if $debug is true
 
 global.$event =
   focus: null
@@ -70,7 +72,7 @@ app.run [
           provider.color = '#' + color
         $scope.providers = res.providers
         $scope.apply()
-        
+
     global.$blur = (e, f) ->
       if $event.focus? and (f is true or not $event.focus.has e.target)
         document.body.focus()

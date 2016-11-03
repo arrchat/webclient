@@ -14,13 +14,13 @@ module.exports = (socket) ->
         query_id: @id
       for key, value of @data
         pack[key] = value unless key is 'packet_type' or key is 'query_id'
-      console.log '[client]', pack
+      console.debug '[client]', pack
       socket.send pack
 
       @timer = =>
         unless @delivered is true
           socket.send pack
-          console.log  @delivered, 'sending packet again'
+          console.debug  @delivered, 'sending packet again'
           setTimeout @timer, 10000
 
       if @autoresend is true
@@ -28,8 +28,8 @@ module.exports = (socket) ->
 
       new waff.Promise (resolve, reject) =>
         handler = (res) =>
-          
-          console.log '[server]', res if $debug
+
+          console.debug '[server]', res if $debug
           return @delivered = true if res.query_id is @id and res.packet_type is Type.server.confirmation
 
           if res.response_id is @id
