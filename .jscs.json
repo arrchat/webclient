@@ -1,0 +1,26 @@
+{
+  "preset": "google",
+  "requireCapitalizedConstructors": false,
+  "requireCamelCaseOrUpperCaseIdentifiers": false,
+  "requireCurlyBraces": false,
+  "disallowSpacesInsideArrayBrackets": false,
+  "disallowSpacesInsideObjectBrackets": false,
+  "disallowMultipleLineStrings": false,
+  "jsDoc": {
+    "checkAnnotations": {
+      "extra": {
+        "class": true,
+        "param": true,
+        "example": true,
+        "module": true,
+        "func": true,
+        "alias": true,
+        "namespace": true,
+        "memberof": true,
+        "instance": true,
+        "type": true,
+        "returns": true
+      }
+    }
+  }
+}

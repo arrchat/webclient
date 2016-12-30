@@ -1,0 +1,16 @@
+{
+  "libs": [
+    "commonjs"
+  ],
+  "loadEagerly": [
+    "*.js",
+    "app/**/*.js"
+  ],
+  "plugins": {
+    "node": {},
+    "requirejs": {
+      "baseURL": "./",
+      "paths": {}
+    }
+  }
+}

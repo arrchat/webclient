@@ -1,7 +1,0 @@
-// conversations view
-.conversation-options
-.conversation-nores
-.conversation-header(ng-repeat-start='provider in providers', ng-if='menu == "contacts" && (provider.contacts | search).length > 0', context-menu='provider') {{ provider.name }}
-  .login {{ provider.login }}
-.conversation-item(ng-repeat-end, ng-if='menu == "contacts"', ng-repeat='item in provider.contacts | search')
-.conversation-item(ng-repeat-end, ng-if='menu == "providers"', ng-repeat='item in providers | search')
