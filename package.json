@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "grunt build"
   },
   "authors": [
     "wvffle <casper@wvffle.net>"
@@ -13,6 +14,17 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/arrchat/webclient.git"
+  },
+  "dependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "rimraf": "^2.5.4"
+  },
+  "devDependencies": {
+    "babel-preset-es2017": "^6.22.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^6.0.0",
+    "grunt-browserify": "^5.0.0"
   }
 }
-

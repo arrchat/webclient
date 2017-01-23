@@ -4,7 +4,8 @@
   ],
   "loadEagerly": [
     "*.js",
-    "app/**/*.js"
+    "app/**/*.js",
+    "node_modules/grunt/lib/grunt.js"
   ],
   "plugins": {
     "node": {},

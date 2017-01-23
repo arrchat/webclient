@@ -1,0 +1,11 @@
+{
+    "extends": "airbnb-base",
+    "installedESLint": true,
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+      "one-var": ["error", "always"],
+      "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    }
+}

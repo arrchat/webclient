@@ -1,11 +1,7 @@
 {
-  "preset": "google",
-  "requireCapitalizedConstructors": false,
-  "requireCamelCaseOrUpperCaseIdentifiers": false,
-  "requireCurlyBraces": false,
-  "disallowSpacesInsideArrayBrackets": false,
-  "disallowSpacesInsideObjectBrackets": false,
-  "disallowMultipleLineStrings": false,
+  "preset": "airbnb",
+  "disallowVar": true,
+  "disallowMultipleVarDecl": false,
   "jsDoc": {
     "checkAnnotations": {
       "extra": {
