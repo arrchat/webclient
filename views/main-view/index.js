@@ -1,3 +1,4 @@
+// main-view view
 import Vue from 'vuejs';
 
 export default new Vue({
