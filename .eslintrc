@@ -2,10 +2,19 @@
     "extends": "airbnb-base",
     "installedESLint": true,
     "plugins": [
-        "import"
+      "import"
     ],
+    "env": {
+      "browser": true,
+      "node": true,
+    },
+    "globals": {
+      "Vue": true,
+      "template": true
+    },
     "rules": {
-      "one-var": ["error", "always"],
+      "global-require": ["error", "never"],
+      "one-var": ["error", "never"],
       "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
     }
 }

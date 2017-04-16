@@ -20,12 +20,19 @@
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
     "msgpack-lite": "^0.1.26",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "vue": "^2.2.6",
+    "waff-query": "git+https://github.com/wvffle/waff-query.git"
   },
   "devDependencies": {
-    "babel-preset-es2017": "^6.22.0",
+    "babel-plugin-module-resolver": "^2.7.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-latest": "^6.24.1",
     "grunt": "^1.0.1",
     "grunt-babel": "^6.0.0",
-    "grunt-browserify": "^5.0.0"
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-pug": "^1.0.0",
+    "grunt-contrib-stylus": "^1.2.0",
+    "pug": "^2.0.0-beta11"
   }
 }
