@@ -66,7 +66,7 @@ module.exports = function gruntfile(grunt) {
     stylus: {
       compile: {
         files: {
-          '.dist/assets/style/style.css': 'views/**/index.styl',
+          '.dist/assets/style/style.css': 'views/*/index.styl',
         },
         options: {
           compress: !debug,

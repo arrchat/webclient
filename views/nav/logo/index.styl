@@ -1,0 +1,26 @@
+@import 'colors'
+@import 'dimensions'
+
+nav_height = dim.nav.height
+logo_size = dim.nav.logo.size
+sidebar_width = dim.sidebar.width
+
+.logo
+  size sidebar_width nav_height
+  line-height nav_height
+  display flex
+  align-items center
+  justify-content center
+  font-size 3rem
+  font-weight 900
+  margin 7px 0
+  color: colors.base
+  border-right: 1px solid colors.support
+  &::before
+    size logo_size
+    content ''
+    background asset('images/arrchat.svg')
+    background-size auto logo_size
+    background-repeat no-repeat
+    display block
+    float left
