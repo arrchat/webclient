@@ -1,6 +1,24 @@
 // nav view
+@import 'colors'
+
 .nav
   height 48px
-  border-bottom 1px solid gray
+  border-bottom: 1px solid colors.support
   display flex
   align-items center
+
+  .logo
+    height 48px
+    line-height 48px
+    font-size 3rem
+    font-weight 900
+    margin 7px 0
+    color: colors.base
+    &::before
+      size 48px
+      content ''
+      background asset('images/arrchat.svg')
+      background-size auto 48px
+      background-repeat no-repeat
+      display block
+      float left

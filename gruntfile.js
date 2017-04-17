@@ -71,6 +71,16 @@ module.exports = function gruntfile(grunt) {
         options: {
           compress: !debug,
           import: ['nib'],
+          paths: ['style/'],
+          define: {
+            asset: function (file) {
+              const f = [];
+              const path = this.filename.split('/');
+              for (let i = 0; i < path.length - 1; ++i) f.push('..');
+              f.push('assets', file.string);
+              return new (require('stylus/lib/nodes/string'))(`url(${f.join('/')})`, '');
+            },
+          },
         },
       },
     },
@@ -81,10 +91,46 @@ module.exports = function gruntfile(grunt) {
         },
       },
     },
+    favicons: {
+      options: {
+        regular: true,
+        firefox: false,
+        apple: false,
+        windowsTile: false,
+      },
+      target: {
+        src: 'assets/favicon.svg',
+        dest: '.dist/assets/favicons/'
+      },
+    },
+    watch: {
+      pug: {
+        files: ['views/**/*.pug', '!views/index/*.pug', 'app/arrchat.js'],
+        tasks: ['prepare', 'babel:arrchat', 'browserify'],
+      },
+      index: {
+        files: ['views/index/*.pug'],
+        tasks: ['pug'],
+      },
+      styles: {
+        files: ['views/**/*.styl'],
+        tasks: ['stylus'],
+      },
+      app: {
+        files: ['app/**/*.js', '!app/arrchat.js'],
+        tasks: ['babel:app', 'browserify'],
+      },
+      scripts: {
+        files: ['views/**/*.js'],
+        tasks: ['babel:views', 'browserify'],
+      },
+    }
   });
 
   grunt.loadNpmTasks('grunt-babel');
+  grunt.loadNpmTasks('grunt-favicons');
   grunt.loadNpmTasks('grunt-browserify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-pug');
 
@@ -100,7 +146,8 @@ module.exports = function gruntfile(grunt) {
         const cwd = 'views';
         const viewList = grunt.file.expand({ cwd }, ['*', '!index']);
         for (let view of viewList) {
-          views += `${spaces}  '${view}': '${pug.renderFile(`views/${view}/index.pug`, {})}',\n`;
+          const render = pug.renderFile(`views/${view}/index.pug`, {});
+          views += `${spaces}  '${view}': '${render.replace(/\n/g, '\\n')}',\n`;
         }
 
         views += `${spaces}}\n`;
@@ -114,14 +161,22 @@ module.exports = function gruntfile(grunt) {
     grunt.file.write('.dist/assets/js/arrchat.js', content);
   });
 
-  grunt.registerTask('build', ['default']);
+  grunt.registerTask('assets', () => {
+    const files = grunt.file.expand(['assets/*']);
+    for (let file of files) {
+      grunt.file.copy(`${file}`, `.dist/${file}`);
+    }
+  });
+
+  grunt.registerTask('build', ['cleanup', 'default', 'favicons']);
 
   grunt.registerTask('default', [
-    'cleanup',
     'prepare',
     'babel',
     'browserify',
     'stylus',
     'pug',
+    'assets',
+    'watch',
   ]);
 };
