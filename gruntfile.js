@@ -85,6 +85,10 @@ module.exports = function gruntfile(grunt) {
       },
     },
     pug: {
+      options: {
+        data: { debug },
+        pretty: debug,
+      },
       index: {
         files: {
           '.dist/index.html': 'views/index/index.pug',
@@ -104,6 +108,12 @@ module.exports = function gruntfile(grunt) {
       },
     },
     watch: {
+      options: {
+        livereload: {
+          host: 'localhost',
+          port: 35729,
+        },
+      },
       pug: {
         files: ['views/**/*.pug', '!views/index/*.pug', 'app/arrchat.js'],
         tasks: ['prepare', 'babel:arrchat', 'browserify'],

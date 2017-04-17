@@ -1,3 +1,5 @@
+@import 'dimensions'
+
 // main-view view
 .main-view
-  display block
+  height: s('calc(100% - %s)', dim.nav.height)
