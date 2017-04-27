@@ -3,5 +3,26 @@
 
 // available-providers view
 .available-providers
-  height: dim.sidebar.ap.height
+  height: dim.sidebar.ap.height + dim.scrollbar
   border-bottom: 1px solid colors.support
+  padding 7px 7px 7px 0
+  position relative
+  overflow auto
+  display flex
+
+  .provider
+    size: dim.sidebar.ap.height - 14px
+    margin: 0 0 0 7px
+    border-radius 50%
+    position relative
+    overflow hidden
+    display flex
+    flex-shrink 0
+
+    img
+      max-height: dim.sidebar.ap.height
+      position absolute
+      top 50%
+      left 50%
+      transform translate(-50%, -50%)
+
