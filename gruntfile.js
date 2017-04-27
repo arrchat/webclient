@@ -1,5 +1,6 @@
 const rimraf = require('rimraf');
-const pug = require('pug');
+const pug    = require('pug');
+const path   = require('path');
 
 const debug = true;
 
@@ -154,15 +155,24 @@ module.exports = function gruntfile(grunt) {
         let views = `${spaces}const templates = {\n`;
 
         const cwd = 'views';
-        const viewList = grunt.file.expand({ cwd }, ['*', '!index']);
+        const viewList = grunt.file.expand({ cwd }, '*/**/index.js').sort(function (a, b) {
+          return a.split('/').length > b.split('/').length;
+        }).map(function (e) {
+          const s = e.split('/');
+          return {
+            name: s[s.length - 2],
+            path: path.dirname(e),
+          };
+        });
+
         for (let view of viewList) {
-          const render = pug.renderFile(`views/${view}/index.pug`, {});
-          views += `${spaces}  '${view}': '${render.replace(/\n/g, '\\n')}',\n`;
+          const render = pug.renderFile(`views/${view.path}/index.pug`, {});
+          views += `${spaces}  '${view.name}': '${render.replace(/\n/g, '\\n')}',\n`;
         }
 
         views += `${spaces}}\n`;
         for (let view of viewList) {
-          views += `\n${spaces}require('./views/${view}.js');`;
+          views += `\n${spaces}require('./views/${view.path}.js');`;
         }
 
         return views;
