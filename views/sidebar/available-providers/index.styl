@@ -5,10 +5,10 @@
 .available-providers
   height: dim.sidebar.ap.height + dim.scrollbar
   border-bottom: 1px solid colors.support
-  padding 7px 7px 7px 0
   position relative
   overflow auto
   display flex
+  align-items center
 
   .provider
     size: dim.sidebar.ap.height - 14px
@@ -18,6 +18,10 @@
     overflow hidden
     display flex
     flex-shrink 0
+
+    &:last-child
+      border-right 7px solid transparent
+      width: dim.sidebar.ap.height - 7px
 
     img
       max-height: dim.sidebar.ap.height
