@@ -1,7 +1,9 @@
 // toolbar view
-import Vue from 'vuejs'
+import Vue from 'vuejs';
 
-export default new Vue({
-  el: '.toolbar',
-  template: template('toolbar'),
-});
+export default function (template) {
+  return new Vue({
+    el: '.toolbar',
+    template,
+  });
+};

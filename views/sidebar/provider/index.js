@@ -1,7 +1,9 @@
 // provider view
-import Vue from 'vuejs'
+import Vue from 'vuejs';
 
-export default new Vue({
-  el: '.provider',
-  template: template('provider'),
-});
+export default function (template) {
+  return new Vue({
+    el: '.provider',
+    template,
+  });
+};

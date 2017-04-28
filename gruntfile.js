@@ -152,7 +152,7 @@ module.exports = function gruntfile(grunt) {
   grunt.registerTask('prepare', () => {
     let content = grunt.file.read('app/arrchat.js')
       .replace(/(\ *)?\/\/ Load views/, (_, spaces = '') => {
-        let views = `${spaces}const templates = {\n`;
+        let views = '';
 
         const cwd = 'views';
         const viewList = grunt.file.expand({ cwd }, '*/**/index.js').sort(function (a, b) {
@@ -167,12 +167,8 @@ module.exports = function gruntfile(grunt) {
 
         for (let view of viewList) {
           const render = pug.renderFile(`views/${view.path}/index.pug`, {});
-          views += `${spaces}  '${view.name}': '${render.replace(/\n/g, '\\n')}',\n`;
-        }
-
-        views += `${spaces}}\n`;
-        for (let view of viewList) {
-          views += `\n${spaces}require('./views/${view.path}.js');`;
+          views += `\n${spaces}require('./views/${view.path}.js').default`;
+          views += `('${render.replace(/\n/g, '\\n')}');`;
         }
 
         return views;

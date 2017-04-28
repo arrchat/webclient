@@ -1,7 +1,9 @@
 // available-providers view
-import Vue from 'vuejs'
+import Vue from 'vuejs';
 
-export default new Vue({
-  el: '.available-providers',
-  template: template('available-providers'),
-});
+export default function (template) {
+  return new Vue({
+    el: '.available-providers',
+    template,
+  });
+};

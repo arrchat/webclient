@@ -1,7 +1,9 @@
 // nav view
-import Vue from 'vuejs'
+import Vue from 'vuejs';
 
-export default new Vue({
-  el: '.nav',
-  template: template('nav'),
-});
+export default function (template) {
+  return new Vue({
+    el: '.nav',
+    template,
+  });
+};
