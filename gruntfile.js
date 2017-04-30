@@ -184,15 +184,16 @@ module.exports = function gruntfile(grunt) {
     }
   });
 
-  grunt.registerTask('build', ['cleanup', 'default', 'favicons']);
-
-  grunt.registerTask('default', [
+  grunt.registerTask('main', [
     'prepare',
     'babel',
     'browserify',
     'stylus',
     'pug',
     'assets',
-    'watch',
   ]);
+
+  grunt.registerTask('build', ['cleanup', 'main', 'favicons']);
+
+  grunt.registerTask('default', ['main', 'watch']);
 };
